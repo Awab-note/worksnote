@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Validate | Works Flow</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; }
+    header { background: #0d47a1; color: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { margin: 0; font-size: 1.5rem; }
+    header a { background: #ffca28; color: #000; padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; font-weight: bold; }
+    .hero { background: #e3f2fd; text-align: center; padding: 3rem 2rem; }
+    .hero h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.1rem; margin-bottom: 2rem; }
+    .hero img { max-width: 100%; height: auto; border-radius: 10px; }
+    .section { padding: 2rem; max-width: 1000px; margin: auto; }
+    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+    .feature { background: #f9f9f9; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    form { display: grid; gap: 1rem; max-width: 500px; margin: auto; background: #fafafa; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    form input, form button { padding: 0.8rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 5px; }
+    form button { background: #0d47a1; color: white; border: none; cursor: pointer; }
+    footer { background: #0d47a1; color: #fff; text-align: center; padding: 1rem; margin-top: 2rem; font-size: 0.9rem; }
+    @media (max-width: 600px) { .hero h2 { font-size: 1.5rem; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Works Flow</h1>
+    <a href="#register">Get Free Trial</a>
+  </header>
+
+  <section class="hero">
+    <h2>Validate Your Bids. Save Time. Avoid Costly Mistakes.</h2>
+    <p>Works Flow’s <strong>Validate</strong> tool helps estimation & QS engineers quickly review tender submissions for compliance and accuracy — so you can focus on winning more projects.</p>
+    <img src="https://via.placeholder.com/800x400" alt="Validate App Screenshot" />
+  </section>
+
+  <section class="section">
+    <h2>Why Validate?</h2>
+    <p><strong>The Problem:</strong> Inconsistent vendor quotations, missing items, time wasted on manual checks, and risk of non-compliance.</p>
+    <p><strong>Our Solution:</strong> Automated bid compliance checks, flexible data input, cloud integration, customizable rules, and clear reports.</p>
+  </section>
+
+  <section class="section">
+    <h2>Features Built for Construction Professionals</h2>
+    <div class="features">
+      <div class="feature">Bid Compliance Checking – Instantly flag missing or inconsistent items</div>
+      <div class="feature">Flexible Data Input – Accepts standard and unstructured vendor quotes</div>
+      <div class="feature">Cloud Integration – Works with Microsoft & Google tools</div>
+      <div class="feature">Customizable Rules – Match your company’s requirements</div>
+      <div class="feature">Detailed Reports – Export compliance summaries for management</div>
+    </div>
+  </section>
+
+  <section id="register" class="section">
+    <h2>Get Validate Free for a Limited Time</h2>
+    <p>Register below to get your free trial. We’ll send you a download link directly to your inbox.</p>
+    <form>
+      <input type="text" placeholder="Full Name" required />
+      <input type="text" placeholder="Company" required />
+      <input type="email" placeholder="Email" required />
+      <input type="text" placeholder="Country" />
+      <label><input type="checkbox" required /> I agree to receive emails from Works Flow</label>
+      <button type="submit">Send Me the Free Trial</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 Works Flow | Contact: info@worksflow.com | Privacy Policy
+  </footer>
+</body>
+</html>
