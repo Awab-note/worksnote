@@ -1,72 +1,163 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Validate | Works Flow</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Validate - Proof backed BOQ Cost Validation</title>
+  <meta name="description" content="Validate is a global desktop app for proof backed BOQ cost validation. Fast, accurate checks, PDF evidence capture, and clean exports built for teams worldwide." />
+  <meta name="theme-color" content="#0a66c2" />
   <style>
-    body { font-family: Arial, sans-serif; margin: 0; padding: 0; line-height: 1.6; color: #333; }
-    header { background: #0d47a1; color: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-    header h1 { margin: 0; font-size: 1.5rem; }
-    header a { background: #ffca28; color: #000; padding: 0.5rem 1rem; border-radius: 5px; text-decoration: none; font-weight: bold; }
-    .hero { background: #e3f2fd; text-align: center; padding: 3rem 2rem; }
-    .hero h2 { font-size: 2rem; margin-bottom: 1rem; }
-    .hero p { font-size: 1.1rem; margin-bottom: 2rem; }
-    .hero img { max-width: 100%; height: auto; border-radius: 10px; }
-    .section { padding: 2rem; max-width: 1000px; margin: auto; }
-    .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
-    .feature { background: #f9f9f9; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    form { display: grid; gap: 1rem; max-width: 500px; margin: auto; background: #fafafa; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-    form input, form button { padding: 0.8rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 5px; }
-    form button { background: #0d47a1; color: white; border: none; cursor: pointer; }
-    footer { background: #0d47a1; color: #fff; text-align: center; padding: 1rem; margin-top: 2rem; font-size: 0.9rem; }
-    @media (max-width: 600px) { .hero h2 { font-size: 1.5rem; } }
+    :root{
+      --bg:#f3f2ef;
+      --panel:#ffffff;
+      --text:#191919;
+      --muted:#5f5f5f;
+      --brand:#0a66c2;
+      --brand-dark:#004182;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);}    
+    header{background:var(--brand);color:white;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+    header h1{font-size:1.5rem;margin:0;}
+    .btn{background:var(--brand);color:white;padding:.6rem 1.2rem;border-radius:4px;text-decoration:none;font-weight:600;}
+    .btn:hover{background:var(--brand-dark);}    
+    select.lang-select{background:white;color:var(--brand-dark);padding:.4rem .8rem;border-radius:4px;border:1px solid var(--brand-dark);cursor:pointer;font-weight:600;}
+    main{max-width:1100px;margin:2rem auto;padding:1rem;}
+    section{margin-bottom:3rem;}
+    .hero{text-align:center;padding:2rem;background:var(--panel);border-radius:8px;box-shadow:0 4px 10px rgba(0,0,0,.05);}    
+    .hero h2{color:var(--brand);font-size:2rem;margin-bottom:1rem;}
+    .hero p{color:var(--muted);font-size:1.1rem;margin-bottom:1.5rem;}
+    .section-title{text-align:center;color:var(--brand-dark);margin-bottom:1rem;font-size:1.6rem;font-weight:700;}
+    .muted{color:var(--muted)}
+    .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem;}
+    .card{background:var(--panel);border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.05);padding:1.2rem;text-align:left;}
+    .card h3{color:var(--brand-dark);margin-bottom:.5rem;}
+    .card p{color:var(--muted);} 
+    .cta{text-align:center;background:var(--brand);color:white;padding:3rem 2rem;border-radius:8px;line-height:2;}
+    .cta h2{margin-bottom:1.2rem;}
+    .cta p{margin-bottom:2rem;font-size:1.1rem;}
+    footer{background:var(--brand-dark);color:white;text-align:center;padding:1rem;margin-top:3rem;}
   </style>
 </head>
 <body>
   <header>
-    <h1>Works Flow</h1>
-    <a href="#register">Get Free Trial</a>
+    <h1>Validate</h1>
+    <div style="display:flex;gap:1rem;align-items:center;">
+      <select id="langSelect" class="lang-select" onchange="changeLanguage()">
+        <option value="en">English</option>
+        <option value="ar">Arabic</option>
+        <option value="de">German</option>
+        <option value="es">Spanish</option>
+      </select>
+      <a href="mailto:awabsa@gmail.com?subject=Validate%20Request%20Access" class="btn">Contact</a>
+    </div>
   </header>
 
-  <section class="hero">
-    <h2>Validate Your Bids. Save Time. Avoid Costly Mistakes.</h2>
-    <p>Works Flow’s <strong>Validate</strong> tool helps estimation & QS engineers quickly review tender submissions for compliance and accuracy — so you can focus on winning more projects.</p>
-    <img src="https://via.placeholder.com/800x400" alt="Validate App Screenshot" />
-  </section>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <h2 data-en="Validate - Proof backed BOQ Cost Validation" data-ar="فاليديت - التحقق المستند إلى الأدلة لتكلفة بنود الكميات" data-de="Validate - Nachweisgestützte BOQ-Kostenvalidierung" data-es="Validate - Validación de Costos BOQ Basada en Pruebas">Validate - Proof backed BOQ Cost Validation</h2>
+      <p data-en="Review each BOQ line, capture supplier prices from PDFs, and export with full audit evidence. Global ready: multi language, multi currency, and local tax compliance for every market." data-ar="راجع كل بند في جدول الكميات، وقم بالتقاط أسعار الموردين من ملفات PDF، وصدرها مع دليل تدقيق كامل. جاهز عالميًا: متعدد اللغات والعملات ومتوافق مع الضرائب المحلية." data-de="Überprüfen Sie jede BOQ-Zeile, erfassen Sie Lieferantenpreise aus PDFs und exportieren Sie sie mit vollständigem Prüfungsnachweis. Weltweit einsatzbereit: mehrsprachig, mehrere Währungen und lokale Steuerkonformität." data-es="Revise cada línea del BOQ, capture precios de proveedores desde archivos PDF y expórtelos con evidencia de auditoría completa. Listo para el mundo: multilingüe, multimoneda y cumplimiento fiscal local.">Review each BOQ line, capture supplier prices from PDFs, and export with full audit evidence. Global ready: multi language, multi currency, and local tax compliance for every market.</p>
+      <a href="mailto:awabsa@gmail.com?subject=Validate%20Request%20Access" class="btn">Request Access</a>
+    </section>
 
-  <section class="section">
-    <h2>Why Validate?</h2>
-    <p><strong>The Problem:</strong> Inconsistent vendor quotations, missing items, time wasted on manual checks, and risk of non-compliance.</p>
-    <p><strong>Our Solution:</strong> Automated bid compliance checks, flexible data input, cloud integration, customizable rules, and clear reports.</p>
-  </section>
+    <!-- KEY FEATURES -->
+    <section>
+      <h2 class="section-title" data-en="Key Features" data-ar="الميزات الرئيسية" data-de="Hauptfunktionen" data-es="Funciones clave">Key Features</h2>
+      <div class="features">
+        <div class="card">
+          <h3 data-en="PDF Evidence Capture" data-ar="التقاط الأدلة من PDF" data-de="PDF-Nachweiserfassung" data-es="Captura de evidencia en PDF">PDF Evidence Capture</h3>
+          <p data-en="Highlight exact supplier prices in PDFs and store them with timestamp and page reference for reliable documentation across projects worldwide." data-ar="قم بتمييز أسعار الموردين الدقيقة في ملفات PDF وخزنها مع ختم زمني ورقم الصفحة لتوثيق موثوق عبر المشاريع حول العالم." data-de="Markieren Sie exakte Lieferantenpreise in PDFs und speichern Sie sie mit Zeitstempel und Seitenreferenz für eine verlässliche Dokumentation weltweit." data-es="Resalte precios exactos de proveedores en PDFs y guárdelos con marca de tiempo y referencia de página para una documentación confiable en todo el mundo.">Highlight exact supplier prices in PDFs and store them with timestamp and page reference for reliable documentation across projects worldwide.</p>
+        </div>
+        <div class="card">
+          <h3 data-en="Item by item Validation" data-ar="التحقق بندًا بندًا" data-de="Positionsweise Validierung" data-es="Validación por partida">Item by item Validation</h3>
+          <p data-en="Validate every BOQ line individually with editable Material and Installation cost fields, supported by a live Cost Breakdown Structure (CBS)." data-ar="تحقق من كل بند في جدول الكميات على حدة مع حقول قابلة للتعديل لتكلفة المواد والتركيب، مدعومة ببنية تفصيلية للتكلفة (CBS) مباشرة." data-de="Validieren Sie jede BOQ-Position einzeln mit editierbaren Feldern für Material- und Installationskosten, unterstützt durch eine Live-Kostenstruktur (CBS)." data-es="Valide cada partida del BOQ con campos editables de Material e Instalación, respaldado por una Estructura de Desglose de Costos (CBS) en vivo.">Validate every BOQ line individually with editable Material and Installation cost fields, supported by a live Cost Breakdown Structure (CBS).</p>
+        </div>
+        <div class="card">
+          <h3 data-en="Global Ready" data-ar="جاهز عالميًا" data-de="Global bereit" data-es="Listo para el mundo">Global Ready</h3>
+          <p data-en="Supports multi language (incl. Arabic/RTL), multi currency conversions, and regional tax formats (VAT/GST) for international teams." data-ar="يدعم تعدد اللغات (بما في ذلك العربية/من اليمين إلى اليسار)، وتحويلات العملات المتعددة، وصيغ الضرائب الإقليمية (VAT/GST) للفرق الدولية." data-de="Unterstützt Mehrsprachigkeit (inkl. Arabisch/RTL), Mehrwährungsumrechnung und regionale Steuerformate (MwSt./GST) für internationale Teams." data-es="Admite varios idiomas (incluido árabe/RTL), conversiones multimoneda y formatos fiscales regionales (IVA/IGV) para equipos internacionales.">Supports multi language (incl. Arabic/RTL), multi currency conversions, and regional tax formats (VAT/GST) for international teams.</p>
+        </div>
+        <div class="card">
+          <h3 data-en="Cloud Collaboration" data-ar="تعاون سحابي" data-de="Cloud-Zusammenarbeit" data-es="Colaboración en la nube">Cloud Collaboration</h3>
+          <p data-en="Share validated BOQs through Google Drive or cloud APIs, enabling real time teamwork from anywhere in the world." data-ar="شارك جداول الكميات المعتمدة عبر Google Drive أو واجهات برمجة تطبيقات السحابة، مما يتيح العمل الجماعي في الوقت الفعلي من أي مكان في العالم." data-de="Teilen Sie validierte BOQs über Google Drive oder Cloud-APIs und ermöglichen Sie so Teamarbeit in Echtzeit von überall auf der Welt." data-es="Comparta BOQs validados a través de Google Drive o APIs en la nube, habilitando el trabajo en equipo en tiempo real desde cualquier lugar del mundo.">Share validated BOQs through Google Drive or cloud APIs, enabling real time teamwork from anywhere in the world.</p>
+        </div>
+      </div>
+    </section>
 
-  <section class="section">
-    <h2>Features Built for Construction Professionals</h2>
-    <div class="features">
-      <div class="feature">Bid Compliance Checking – Instantly flag missing or inconsistent items</div>
-      <div class="feature">Flexible Data Input – Accepts standard and unstructured vendor quotes</div>
-      <div class="feature">Cloud Integration – Works with Microsoft & Google tools</div>
-      <div class="feature">Customizable Rules – Match your company’s requirements</div>
-      <div class="feature">Detailed Reports – Export compliance summaries for management</div>
-    </div>
-  </section>
+    <!-- HOW IT WORKS -->
+    <section>
+      <h2 class="section-title" data-en="How It Works" data-ar="كيف يعمل" data-de="So funktioniert es" data-es="Cómo funciona">How It Works</h2>
+      <p class="muted" style="text-align:center" data-en="1. Import BOQ (Excel) and material data  2. Validate each line with PDF evidence  3. Export BOQ with a secure, traceable evidence pack  4. Share results with your partners via cloud or local export" data-ar="1. استيراد جدول الكميات (Excel) وبيانات المواد  2. التحقق من كل بند باستخدام أدلة PDF  3. تصدير جدول الكميات مع حزمة أدلة آمنة وقابلة للتتبع  4. مشاركة النتائج مع شركائك عبر السحابة أو التصدير المحلي" data-de="1. BOQ (Excel) und Materialdaten importieren  2. Jede Position mit PDF-Nachweisen validieren  3. BOQ mit sicherem, nachverfolgbarem Evidence-Pack exportieren  4. Ergebnisse mit Partnern per Cloud oder lokal teilen" data-es="1. Importar BOQ (Excel) y datos de materiales  2. Validar cada partida con evidencia en PDF  3. Exportar el BOQ con un paquete de evidencia seguro y rastreable  4. Compartir resultados con socios vía nube o exportación local">1. Import BOQ (Excel) and material data · 2. Validate each line with PDF evidence · 3. Export BOQ with a secure, traceable evidence pack · 4. Share results with your partners via cloud or local export</p>
+    </section>
 
-  <section id="register" class="section">
-    <h2>Get Validate Free for a Limited Time</h2>
-    <p>Register below to get your free trial. We’ll send you a download link directly to your inbox.</p>
-    <form>
-      <input type="text" placeholder="Full Name" required />
-      <input type="text" placeholder="Company" required />
-      <input type="email" placeholder="Email" required />
-      <input type="text" placeholder="Country" />
-      <label><input type="checkbox" required /> I agree to receive emails from Works Flow</label>
-      <button type="submit">Send Me the Free Trial</button>
-    </form>
-  </section>
+    <!-- WHY CHOOSE -->
+    <section>
+      <h2 class="section-title" data-en="Why Choose Validate?" data-ar="لماذا تختار فاليديت؟" data-de="Warum Validate?" data-es="¿Por qué elegir Validate?">Why Choose Validate?</h2>
+      <div class="features">
+        <div class="card">
+          <h3 data-en="Trusted Accuracy" data-ar="دقة موثوقة" data-de="Vertrauenswürdige Genauigkeit" data-es="Precisión confiable">Trusted Accuracy</h3>
+          <p data-en="Reduce bid errors by over 15% with our item by item validation and automated price tracking workflow." data-ar="قلل أخطاء العطاءات بأكثر من 15٪ من خلال التحقق بندًا بندًا وسير العمل المؤتمت لتتبع الأسعار." data-de="Reduzieren Sie Angebotsfehler um über 15 % durch positionsweise Validierung und automatisiertes Preis-Tracking." data-es="Reduzca los errores en licitaciones en más de un 15% con nuestra validación por partida y flujo automatizado de seguimiento de precios.">Reduce bid errors by over 15% with our item by item validation and automated price tracking workflow.</p>
+        </div>
+        <div class="card">
+          <h3 data-en="Efficiency Gains" data-ar="كفاءة أعلى" data-de="Effizienzgewinne" data-es="Ganancias de eficiencia">Efficiency Gains</h3>
+          <p data-en="50% faster validation process compared to manual review, helping teams deliver bids on time with full confidence." data-ar="عملية تحقق أسرع بنسبة 50٪ مقارنة بالمراجعات اليدوية، مما يساعد الفرق على تقديم العطاءات في الوقت المحدد بثقة كاملة." data-de="50 % schnellerer Validierungsprozess als manuelle Prüfung – Teams liefern Angebote pünktlich und mit voller Sicherheit." data-es="Proceso de validación un 50% más rápido en comparación con la revisión manual, ayudando a los equipos a entregar ofertas a tiempo con total confianza.">50% faster validation process compared to manual review, helping teams deliver bids on time with full confidence.</p>
+        </div>
+        <div class="card">
+          <h3 data-en="Audit Trail Built in" data-ar="سجل تدقيق مدمج" data-de="Integrierte Prüfspur" data-es="Trazabilidad de auditoría integrada">Audit Trail Built in</h3>
+          <p data-en="Every edit and override is logged with user, reason, and evidence link meeting global compliance requirements." data-ar="يتم تسجيل كل تعديل أو استبدال مع المستخدم والسبب ورابط الدليل بما يفي بمتطلبات الامتثال العالمية." data-de="Jede Änderung wird mit Benutzer, Grund und Evidenz-Link protokolliert und erfüllt globale Compliance-Anforderungen." data-es="Cada edición y sustitución se registra con usuario, motivo y enlace de evidencia, cumpliendo los requisitos de cumplimiento global.">Every edit and override is logged with user, reason, and evidence link meeting global compliance requirements.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section>
+      <h2 class="section-title" data-en="Testimonials" data-ar="آراء المستخدمين" data-de="Testimonials" data-es="Testimonios">Testimonials</h2>
+      <div class="card testimonial">
+        <p data-en="Validate is currently in its early launch phase. We are seeking professionals and companies worldwide to help evaluate and improve it. Join us as an early tester and shape the future of cost validation!" data-ar="فاليديت في مرحلة الإطلاق المبكر. نبحث عن محترفين وشركات حول العالم للمساعدة في التقييم والتحسين. انضم كمختبر مبكر وساهم في تشكيل مستقبل التحقق من التكاليف!" data-de="Validate befindet sich in einer frühen Einführungsphase. Wir suchen weltweit Fachleute und Unternehmen, die bei der Bewertung und Verbesserung helfen. Werden Sie Early Tester und gestalten Sie die Zukunft der Kostenvalidierung mit!" data-es="Validate se encuentra en su fase de lanzamiento inicial. Buscamos profesionales y empresas de todo el mundo para ayudar a evaluarlo y mejorarlo. ¡Únase como probador temprano y dé forma al futuro de la validación de costos!">Validate is currently in its early launch phase. We are seeking professionals and companies worldwide to help evaluate and improve it. Join us as an early tester and shape the future of cost validation!</p>
+      </div>
+    </section>
+
+    <!-- ERP INTEGRATION -->
+    <section>
+      <h2 class="section-title" data-en="Seamless ERP Integration" data-ar="تكامل سلس مع أنظمة ERP" data-de="Nahtlose ERP-Integration" data-es="Integración ERP sin fricciones">Seamless ERP Integration</h2>
+      <div class="features">
+        <div class="card">
+          <h3 data-en="Connect to Your ERP" data-ar="الاتصال بنظام ERP الخاص بك" data-de="Anbindung an Ihr ERP" data-es="Conéctese a su ERP">Connect to Your ERP</h3>
+          <p data-en="Validate integrates directly with leading ERP systems such as SAP, Oracle, Odoo, and Microsoft Dynamics, syncing BOQ data and cost updates in real time." data-ar="يتكامل فاليديت مباشرة مع أنظمة ERP الرائدة مثل SAP وOracle وOdoo وMicrosoft Dynamics، لمزامنة بيانات جدول الكميات وتحديثات التكاليف في الوقت الفعلي." data-de="Validate integriert sich direkt mit führenden ERP-Systemen wie SAP, Oracle, Odoo und Microsoft Dynamics und synchronisiert BOQ-Daten und Kostenaktualisierungen in Echtzeit." data-es="Validate se integra directamente con los principales sistemas ERP como SAP, Oracle, Odoo y Microsoft Dynamics, sincronizando datos del BOQ y actualizaciones de costos en tiempo real.">Validate integrates directly with leading ERP systems such as SAP, Oracle, Odoo, and Microsoft Dynamics, syncing BOQ data and cost updates in real time.</p>
+        </div>
+        <div class="card">
+          <h3 data-en="Automated Data Sync" data-ar="مزامنة بيانات مؤتمتة" data-de="Automatisierte Datensynchronisation" data-es="Sincronización de datos automatizada">Automated Data Sync</h3>
+          <p data-en="Reduce manual entry by linking your company’s material, supplier, and cost data to Validate, ensuring every update reflects instantly in your ERP environment." data-ar="قلل الإدخال اليدوي عبر ربط بيانات المواد والموردين والتكاليف الخاصة بشركتك بفاليديت، لضمان انعكاس كل تحديث فورًا في بيئة ERP الخاصة بك." data-de="Verringern Sie manuelle Eingaben, indem Sie Material-, Lieferanten- und Kostendaten Ihres Unternehmens mit Validate verknüpfen, sodass jede Änderung sofort in Ihrem ERP sichtbar ist." data-es="Reduzca la entrada manual vinculando los datos de materiales, proveedores y costos de su empresa con Validate, asegurando que cada actualización se refleje al instante en su ERP.">Reduce manual entry by linking your company’s material, supplier, and cost data to Validate, ensuring every update reflects instantly in your ERP environment.</p>
+        </div>
+        <div class="card">
+          <h3 data-en="API Ready Architecture" data-ar="هندسة جاهزة لواجهات API" data-de="API-bereite Architektur" data-es="Arquitectura lista para API">API Ready Architecture</h3>
+          <p data-en="Our API first approach enables secure and customizable integration with any modern ERP or project management tool to fit your workflow globally." data-ar="يتيح نهج واجهات البرمجة أولًا لدينا تكاملًا آمنًا وقابلًا للتخصيص مع أي نظام ERP حديث أو أداة لإدارة المشاريع بما يتناسب مع سير عملك عالميًا." data-de="Unser API-First-Ansatz ermöglicht eine sichere und anpassbare Integration mit jedem modernen ERP- oder Projektmanagement-Tool – weltweit." data-es="Nuestro enfoque API-first permite una integración segura y personalizable con cualquier ERP moderno o herramienta de gestión de proyectos en todo el mundo.">Our API first approach enables secure and customizable integration with any modern ERP or project management tool to fit your workflow globally.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+      <h2 data-en="Ready to Validate Smarter?" data-ar="هل أنت جاهز للتحقق بذكاء؟" data-de="Bereit für intelligente Validierung?" data-es="¿Listo para validar de manera más inteligente?">Ready to Validate Smarter?</h2>
+      <p data-en="Join professionals across industries using Validate for transparent, proof backed cost control. Request early access today." data-ar="انضم إلى المتخصصين حول العالم الذين يستخدمون فاليديت للتحكم الشفاف في التكاليف المستند إلى الأدلة. اطلب الوصول المبكر اليوم." data-de="Schließen Sie sich Fachleuten weltweit an, die Validate für transparente, nachweisgestützte Kostenkontrolle nutzen. Fordern Sie heute frühzeitigen Zugriff an." data-es="Únase a profesionales de todo el mundo que utilizan Validate para un control de costos transparente y respaldado por pruebas. Solicite acceso anticipado hoy.">Join professionals across industries using Validate for transparent, proof backed cost control. Request early access today.</p>
+      <a href="mailto:awabsa@gmail.com?subject=Validate%20Request%20Access" class="btn" style="background:white;color:var(--brand-dark);">Get Started</a>
+    </section>
+  </main>
 
   <footer>
-    &copy; 2025 Works Flow | Contact: info@worksflow.com | Privacy Policy
+    © <span id="year"></span> Validate - Global Cost Validation Platform
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function changeLanguage() {
+      const selectedLang = document.getElementById('langSelect').value;
+      // For every element that has a data-<lang> attribute, swap its text
+      document.querySelectorAll(`[data-${selectedLang}]`).forEach(el => {
+        el.textContent = el.getAttribute(`data-${selectedLang}`);
+      });
+    }
+  </script>
 </body>
 </html>
